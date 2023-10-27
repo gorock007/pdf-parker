@@ -1,11 +1,13 @@
 "use client"
 
-import { Loader2 } from 'lucide-react';
+import { ChevronDown, Loader2 } from 'lucide-react';
 import {Document, Page, pdfjs} from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { useToast } from './ui/use-toast';
 import { useResizeDetector } from 'react-resize-detector';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
 
 //worker for pdf rendering
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
@@ -24,7 +26,13 @@ const PdfRenderer = ({url}: PDFRendererProps) => {
     <div className="w-full bg-white rounded-md shadow flex flex-col items-center">
         <div className="h-14 border-b w-full border-zinc-200 flex items-center justify-between px-2">
             <div className="flex items-center gap-1.5">
-                top bar
+                <Button variant='ghost' aria-label='previous page'>
+                  <ChevronDown className='h-4 w-4' />
+                </Button>
+
+                <div className='flex items-center gap-1.5'>
+                  <Input className='w-12 h-8' />
+                </div>
             </div>
         </div>
 
